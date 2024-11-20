@@ -16,7 +16,7 @@ Copyright (c) 2005 by Yardi Systems
 
                
 
-  PLATFORM    a
+  PLATFORM    
 
                                 SQL_Server
 
@@ -308,6 +308,9 @@ order by p.scode,t.scode
 
 //Select S1
 
+
+/*
+-- Removed this query as it is fetched data of previous ( first row in report )
 SELECT
 
                  phmy
@@ -686,7 +689,8 @@ phmy,thunit,thmyperson,Tran_Type,trhmy,Tran_Date,Description,LsUnits
 
 Union All
 
- 
+
+*/
 
 Select
 
@@ -706,9 +710,9 @@ Select
 
                 ,Charges             Charges
 
-                ,Payments          Payments
+  /*              ,Payments          Payments
 
-                ,LsUnits       LsUnits
+           ,LsUnits       LsUnits */   
 
 From
 
@@ -744,7 +748,7 @@ Select
 
                                 END)  Charges
 
-                ,sum(CASE tr.iType
+         /*       ,sum(CASE tr.iType
 
                                 WHEN 6 THEN d.sAmount
 
@@ -773,6 +777,7 @@ Select
                                                 ELSE ''
 
                                                 END,'') LsUnits
+*/
 
 From     property p
 
@@ -908,9 +913,10 @@ Select
 
                 ,0 Charges
 
-                ,sum(-tr.stotalamount ) Payments
+               /* ,sum(-tr.stotalamount ) Payments
 
                 ,'' LsUnits
+*/
 
 From     property p
 
@@ -972,9 +978,11 @@ SELECT  p.hmy
 
                 ,  -tr.samountpaid charges
 
-                , 0   payments
+            /*    , 0   payments
 
                 ,'' LsUnits
+
+*/
 
 From trans tr
 
@@ -1016,9 +1024,11 @@ Select
 
                 ,Charges             Charges
 
-                ,Payments          Payments
+    /*            ,Payments          Payments
 
                 , LsUnits
+
+*/
 
 From
 
@@ -1054,7 +1064,7 @@ Select
 
                                 END)  Charges
 
-                ,sum(CASE tr.iType
+             /*   ,sum(CASE tr.iType
 
                                 WHEN 6 THEN d.sAmount
 
@@ -1063,6 +1073,7 @@ Select
                                 END)  Payments
 
                 ,'' LsUnits
+*/
 
 FROM
 
@@ -1128,13 +1139,15 @@ Select                                                                          
 
                 ,Sum(Current_Owed) Current_Owed
 
-                ,Sum(Due_0130) Due_0130
+              /*  ,Sum(Due_0130) Due_0130
 
                 ,Sum(Due_3160) Due_3160
 
                 ,Sum(Due_6190) Due_6190
 
+
                 ,Sum(Due_over90) Due_over90
+*/
 
 from
 
@@ -1390,7 +1403,7 @@ R,      M,      begmonth:endmonth,            Month Range,     ,                
 
 0,      A,      begdate,                        Age As Of,     ,                                                                                          ,                                                                              ,             ,    Y,      ,     Y,
 
-C,      T,      vendor,                    Company Vendor,     ,                                                 5 ,                                                                             ,             ,    Y,     N,     N,
+C,      T,      vendor,                    Company Vendor,     ,                                                 5 ,                                                                             ,             ,    Y,     Y,     Y,
 
 L,      T,      Revers,                        Show Reversal?,     ,                                            No^Yes ,                                                                                               ,             ,    Y,      ,     Y,
 
